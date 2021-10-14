@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        border: 2px solid black;
+        text-align: left;
+    }
+
+    th,
+    td {
+        border: 1px solid lightgray;
+        padding: 5px;
+    }
+</style>
+
+
+
+<body>
+    <!-- БЛОК -->
+    <!-- Должен отвечать на вопро:Что это? -->
+    <!-- Это не состояние.Какой?Как выглядить? -->
+
+    <!-- Верно -->
+    <div class="wirning"></div>
+
+
+    <!-- Неверно -->
+    <div class="yellow-wirning"></div>
+
+    <div class="nav-left">
+        <div class="logo"></div>
+    </div>
+
+    <!-- БЛОК -->
+    <!-- Должен отвечать на вопро:Что это? -->
+    <!-- Это не состояние.Какой?Как выглядить? -->
+    <!-- Имя элемента отделяется от имени блока двумя подчёркиваниями(__) -->
+
+    <form class="search-form">
+        <input class="search-form__input" type="text">
+        <button class="search-form__btn">btn</button>
+    </form>
+
+    <!-- Элемент - всегда часть ,блока а не другого элемента -->
+
+    <form class="search-form">
+        <div class="search-form__content">
+            <input class="search-form__content-input" type="text">
+            <input class="search-form__input" type="text">
+            <!-- Либо так -->
+
+            <button class="search-form__btn"></button>
+            <button class="search-form__content-btn">btn</button>
+        </div>
+    </form>
+
+    <!-- Элемент необязательный компонент блока.
+        Не у всех блоков должны быть элементы -->
+
+
+    <!-- Неверно -->
+    <form class="search-for"></form>
+    <input class="search-form__input" type="text">
+
+    <!--  Блок Search-form -->
+    <form class="search-form"></form>
+
+    <!-- Блок Input -->
+    <input class="input" type="text">
+
+    <!-- Блок input -->
+    <button class="button"></button>
+
+
+    <button class="botton">Call me</button>
+
+    <!-- Модификатор -->
+    <!--  Должен отвечать на вопрос:Какой? -->
+    <!--  Это состояние. Какой? Как выглядить? -->
+    <!-- Имя модификатора отделяется от имени блока  -->
+
+
+    <!-- Блоки модификаторов:булевый и ключ-значение -->
+
+    <!-- Булевый -->
+
+    <div class="make-order">
+        <button disabled class="make-order__btn make-order__button_disabled">Сдклать заказ</button>
+
+    </div>
+
+    <!-- Ключ значения -->
+
+    <div class="make-order">
+        <button class="make-order__btn make-order__btn_color_red">Сделать заказ</button>
+    </div>
+
+    <div class="description">
+        <p class="description__p description__p_color_green description__p_fsz_24px"></p>
+    </div>
+
+    <!-- Невозможно одновременно использовать 2 одинаковых модификатора с разными значениями  -->
+    <div class="description">
+        <p class="description__p description__p_fw_700 description__p_fw_400"></p>
+
+    </div>
+
+    <!-- input -->
+
+    <input type="text" placeholder="Enter name">
+    <input type="password">
+    <input type="tel" placeholder="Enter phone number">
+    <input type="email">
+    <input type="number">
+    <input type="checkbox">
+    <input type="date">
+
+
+    <!-- Table -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>price</th>
+                <th>count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>ball</td>
+                <td>300</td>
+                <td>12</td>
+
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ball-nike</td>
+                <td>400</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>ball-adi</td>
+                <td>500</td>
+                <td>12</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>#</th>
+                <th>Total</th>
+                <th>3000</th>
+                <th>5</th>
+            </tr>
+
+
+        </tfoot>
+    </table>
+
+    <form>
+        <label>Username: <input type="text"></label>
+        <label>Password: <input type="password"></label>
+        <input type="submit" value="Submit">
+    </form>
+
+
+
+</body>
+
+</html>
