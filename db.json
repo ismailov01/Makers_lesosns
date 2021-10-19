@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "title": "MacBook M1pro",
+      "subTitle": "Bootcamp",
+      "id": 1
+    },
+    {
+      "title": "MacBook M1pro",
+      "id": 2
+    },
+    {
+      "title": "peoduct 2",
+      "id": 3
+    },
+    {
+      "title": "19-10-2021",
+      "id": 4
+    },
+    {
+      "title": "MacBook M1pro",
+      "id": 5
+    }
+  ]
+}
