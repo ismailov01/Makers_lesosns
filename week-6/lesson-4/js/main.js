@@ -1,8 +1,8 @@
-//! JQuery events
+// //! JQuery events
 
-$(document).ready(() => {
-    console.log('Dom zagruzhen');
-})
+// $(document).ready(() => {
+//     console.log('Dom zagruzhen');
+// })
 //!onclick
 // let btn = $('button')
 // btn.on('click', () => {
@@ -96,43 +96,131 @@ $(document).ready(() => {
 //         img.fadeTo(1000, 0.1)
 // })
 
-//!Modal 
+// //!Modal 
 
-let btnShowModal = $('.show-modal')
-let btnCloseModal = $('.my-modal button')
-let modal = $('.modal')
-let myModal = $('.my-modal')
-function showModal() {
-    modal.fadeIn(1000).css('display', 'flex')
+// let btnShowModal = $('.show-modal')
+// let btnCloseModal = $('.my-modal button')
+// let modal = $('.modal')
+// let myModal = $('.my-modal')
+// function showModal() {
+//     modal.fadeIn(1000).css('display', 'flex')
     
-}
-function closeModal() {
-    modal.fadeOut(1000)
-}
+// }
+// function closeModal() {
+//     modal.fadeOut(1000)
+// }
 
 
-btnShowModal.on('click', showModal)
-btnCloseModal.on('click', closeModal)
-let h3 = $('.my-modal h3')
-let p = $('.my-modal p')
-modal.on('click', (e) => {
-    if(e.target !== myModal[0] && e.target !== p[0] && e.target !== h3[0]){
-        closeModal()
+// btnShowModal.on('click', showModal)
+// btnCloseModal.on('click', closeModal)
+// let h3 = $('.my-modal h3')
+// let p = $('.my-modal p')
+// modal.on('click', (e) => {
+//     if(e.target !== myModal[0] && e.target !== p[0] && e.target !== h3[0]){
+//         closeModal()
+//     }
+// })
+
+// //! range input
+// let range = $('#range')
+// let img = $('img')
+// range.on('change', (e) => {
+//     let value = e.target.value
+//     img.fadeTo(10, value)
+// })
+
+
+
+
+const statusDisplay = $('.game--status');
+
+let gameActive = true;
+let currentPlayer = "X";
+let gameState = ["", "", "", "", "", "", "", "", ""];
+
+const winningMessage = () => `Player ${currentPlayer} has won!`;
+const drawMessage = () => `Game ended in a draw!`;
+const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
+
+statusDisplay.text(currentPlayerTurn())
+
+const winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
+
+function handleCellPlayed(clickedCell, clickedCellIndex) {
+    gameState[clickedCellIndex] = currentPlayer;
+    clickedCell.text(currentPlayer)
+}
+
+function handlePlayerChange() {
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    statusDisplay.text(currentPlayerTurn())
+}
+
+function handleResultValidation() {
+    let roundWon = false;
+    for (let i = 0; i <= 7; i++) {
+        const winCondition = winningConditions[i];
+        let a = gameState[winCondition[0]];
+        let b = gameState[winCondition[1]];
+        let c = gameState[winCondition[2]];
+        if (a === '' || b === '' || c === '') {
+            continue;
+        }
+        if (a === b && b === c) {
+            roundWon = true;
+            break
+        }
     }
-})
 
-//! range input
+    if (roundWon) {
+        statusDisplay.text(winningMessage())
+        gameActive = false;
+        return;
+    }
 
-let range = $('#range')
-let img = $('img')
-range.on('change', (e) => {
-    let value = e.target.value
-    img.fadeTo(10, value)
-})
+    let roundDraw = !gameState.includes("");
+    if (roundDraw) {
+        statusDisplay.text(drawMessage())
+        gameActive = false;
+        return;
+    }
+
+    handlePlayerChange();
+}
+
+function handleCellClick(clickedCellEvent) {
+    const clickedCell = clickedCellEvent.target;
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
+
+    if (gameState[clickedCellIndex] !== "" || !gameActive) {
+        return;
+    }
+
+    handleCellPlayed(clickedCell, clickedCellIndex);
+    handleResultValidation();
+}
+
+function handleRestartGame() {
+    gameActive = true;
+    currentPlayer = "X";
+    gameState = ["", "", "", "", "", "", "", "", ""];
+    statusDisplay.text(currentPlayerTurn())
+    $('.cell').each(cell => cell.text(""));
+}
 
 
-
-
+$('.cell').each(cell => cell.on('click', handleCellClick));
+$('.game--restart').on('click', handleRestartGame);
+ 
 
 
 

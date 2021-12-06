@@ -1,0 +1,28 @@
+{
+  "countries": [
+    {
+      "name": "Kyrgyzstan",
+      "capital": "Bishkek",
+      "population": "99999999999",
+      "id": 1
+    },
+    {
+      "name": "USA",
+      "capital": "Washington DC",
+      "population": "330000000",
+      "id": 2
+    },
+    {
+      "name": "Kuba",
+      "capital": "Kuba",
+      "population": "900000000",
+      "id": 3
+    },
+    {
+      "name": "China",
+      "capital": "Pekin",
+      "population": "200000000000000",
+      "id": 4
+    }
+  ]
+}

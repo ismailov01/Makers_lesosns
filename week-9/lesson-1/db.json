@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "art": "1234",
+      "price": "1234",
+      "size": "m",
+      "color": "black",
+      "type": "evening",
+      "id": 1
+    }
+  ]
+}
